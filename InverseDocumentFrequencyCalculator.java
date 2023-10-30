@@ -1,7 +1,7 @@
 package Lab6;
 
 import java.util.TreeMap;
-
+import java.Math;
 public class InverseDocumentFrequencyCalculator implements IInverseFreq {
 
     @Override
@@ -22,8 +22,33 @@ public class InverseDocumentFrequencyCalculator implements IInverseFreq {
             // and T is the number of songs having term X
             
             ////////////////////////////
-            //WRITE HERE
-            //////////////////////////
+            //Iterate through each word inside the lyrics
+            //I considered using TreeMap.size instead of a counter
+            //but this way should be easier to add to result without having a finished size
+           for(String word: words) {
+               double counterIsIn = 0;
+               double counterTotal = 0;
+            //Checks if we have already done this word               
+               if(!result.containsKey(word)) {
+                   for(String songTitleInner: songLyrics.keySet()) {
+                       String lyricInner = songLyrics.get(songTitleInner);
+                       String[] wordsInner = lyricInner.split(" ");
+                       for(String wordInner: wordsInner) {
+                           // If word equals wordInner we increment the T value
+                           if(word.equals(wordInner)) {
+                               counterIsIn+=1; 
+                               break;
+                           }
+                       }
+                           // Increment total or N value
+                               counterTotal +=1;  
+                   }
+                 //Use math library log to find log of N / T
+                 double X =  Math.log(counterTotal / counterIsIn);
+                 //Add word and its IDF value to result treeMap
+                 result.put(word, X)
+               }  
+           }
         }
         
         return result;
