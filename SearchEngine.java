@@ -17,7 +17,8 @@ public class SearchEngine {
         TFValues = TF.getTermFrequency(songTitleLyrics);
         IDFValues = IDF.getInverseDocumentFrequency(songTitleLyrics);        
     }
-    
+
+    // Search for the name of the song with the highest TF-IDF value for the input query
     public String search(String query)
     {
         String [] queryWords = query.split(" ");
