@@ -17,6 +17,7 @@ public class InverseDocumentFrequencyCalculator implements IInverseFreq {
             // Calculate the Inverse Document Frequency (IDF) Values here
             // You might need to introduce other methods and additional variables
             
+            
             // IDF for term X is calculated as log of N/T where N is total number of songs
             // and T is the number of songs having term X
             

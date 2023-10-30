@@ -27,7 +27,26 @@ public class TermFrequencyCalculator implements ITermFrequency {
             ////////////////////////////
             //WRITE HERE
             //////////////////////////
+           
+            // For each word in the array of words
+            for(String word : words)
+        	{
+            	// If there isn't already a key for a given word, create it
+        		if(!tempMap.containsKey(word))
+        		{
+        			tempMap.put(word, 0.0);
+        		}
+        		
+        		// If the word is found, add one to its frequency
+        		tempMap.put(word, tempMap.get(word) + 1);
+        	}
             
+            // For each key in the tempMap,
+            for(String word: tempMap.keySet())
+            {
+            	// Re-assign the value to be the result of #X/#words in Y
+            	tempMap.put(word, tempMap.get(word)/words.length);
+            }
             
             // After Calculaion
             result.put(songTitle, tempMap);
